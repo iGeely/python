@@ -1,0 +1,81 @@
+% ./configure  --prefix=/home/guash/bin  --enable-shared CFLAGS=-fPIC
+% make -j4
+% make install
+
+--enable-shared 为了生成动态库 libpython2.7.so.1.0。 python 内建 的 module 会存在这个库中。用 pyinstaller 的时候用得上。
+
+无 root 权限 安装：
+https://www.jianshu.com/p/c45af0ddd68a
+
+Note:
+% ./configure --enable-optimizations --prefix=/home/guash/bin --enable-shared CFLAGS=-fPIC
+%python  --version
+会遇到 ImportError: libpython2.7.so.1.0: cannot open shared object file: No such file or directory
+Fix: setenv LD_LIBRARY_PATH /home/guash/new_bin/lib
+
+
+同时， pip3 也会被安装。 用 pip3 安装的 package 自动会成为此 pthon3.5 的一个 package:
+/home/guash/bin/lib/python3.5/site-packages/pip
+
+升级 pip3:
+% pip3 install --upgrade pip 
+
+安装 tensorflow
+https://www.jianshu.com/p/511353bb6e8a
+https://blog.csdn.net/zhangchen_qinyinghua/article/details/51162661
+下载：git clone --recurse-submodules https://github.com/tensorflow/tensorflow
+
+安装最新版本：
+pip3 install tensorflow
+
+安装旧版本：
+pip3 install https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-x.x.x-cp27-none-linux_x86_64.whl 
+x.x.x
+
+
+安装 numpy
+pip3 install numpy
+pip3 install nltk
+
+input buffer overflow, can't enlarge buffer because scanner uses
+
+
+import tensorflow 遇到问题：
+ImportError: /lib64/libc.so.6: version `GLIBC_2.17' not found (required by /home/guash/bin/lib/python3.5/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+
+查看版本：
+strings  /lib64/libc.so.6 | grep GLIBC
+1861:GLIBC_2.2.5
+1862:GLIBC_2.2.6
+1863:GLIBC_2.3
+1864:GLIBC_2.3.2
+1865:GLIBC_2.3.3
+1866:GLIBC_2.3.4
+1867:GLIBC_2.4
+1868:GLIBC_2.5
+1869:GLIBC_2.6
+1870:GLIBC_2.7
+1871:GLIBC_2.8
+1872:GLIBC_2.9
+1873:GLIBC_2.10
+1874:GLIBC_2.11
+1875:GLIBC_2.12
+最高是 2.12。
+
+或者：
+% ls -l /lib64/libc.so.6
+lrwxrwxrwx. 1 root root 12 Sep  6  2017 /lib64/libc.so.6 -> libc-2.12.so
+
+
+下载最新 glibc:
+http://mirrors.ustc.edu.cn/gnu/libc/
+
+
+
+
+
+/proj/vmt_dev_3/shaojie/basepkg_Aug13/out/linux_2.6.32_64.VCS/common/tmp/src/base/lamp/lamp
+
+
+define ENV__ASSEMBLY__COMP_LIST
+release_gate -extra_dj_opts="--save_cmd_logs"
