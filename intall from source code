@@ -11,6 +11,9 @@ Note:
 % ./configure --enable-optimizations --prefix=/home/guash/bin --enable-shared CFLAGS=-fPIC
 %python  --version
 会遇到 ImportError: libpython2.7.so.1.0: cannot open shared object file: No such file or directory
+
+源文件压缩包里含有 libpython3.7m.so.1.0
+
 Fix: setenv LD_LIBRARY_PATH /home/guash/new_bin/lib 
 setenv LD_LIBRARY_PATH "~/shaojie/bin/lib:/home/guash/new_bin/lib:/home/guash/bin/lib"
 
