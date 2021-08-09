@@ -1,0 +1,5 @@
+files_DP_A = []
+files_DP_A.append(pd.read_csv(file_name))
+
+>> df.to_csv("1a.csv", columns=["GPU0 Power Socket Power", "GPU0 Temperature Edge"], float_format="%.3f")
+>>> help(df.to_csv)
