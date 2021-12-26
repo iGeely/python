@@ -1,0 +1,14 @@
+def gen_it_1():
+    l = [1, 2, 3, 4, 5]
+    for i in l:
+      yield i
+   
+
+def gen_it_2():
+    l = [1, 2, 3, 4, 5]
+    yield from l # yeild from
+
+
+def gen_it_3():
+    l = [1, 2, 3, 4, 5]
+    return (x for x in l)  # return a generator
